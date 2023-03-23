@@ -4,25 +4,23 @@ import java.util.ArrayList;
 public class mainClass {
     public static void main(String[] args) {
         int[] vet = new int[5];
+        ArrayList<Integer> numeros = new ArrayList<Integer>();
 
         for (int i = 0; i < vet.length; i++) {
             vet[i] = i;
-        }
-
-        Shuffle em = new Shuffle();
-        Sort or = new Sort();
-
-        em.shuffle(vet);
-
-        for (int i = 0; i < vet.length; i++) {
-            System.out.println(vet[i]);
-        }
-
-        ArrayList<Integer> numeros = new ArrayList<Integer>();
-
-        for (int i = 0; i < 10; i++) {
             numeros.add(i);
         }
+
+        Shuffle sh = new Shuffle();
+        Sort sr = new Sort();
+
+        sh.shuffle(vet);
+
+        sh.write(vet);
+        System.out.println("-__----\n ----- \n ----_-");
+
+        sr.bubbleSort(vet);
+        sh.write(vet);
 
     }
 
