@@ -1,4 +1,5 @@
 public class Search {
+    // BUSCA LINEAR
     public int linearSearch(int[] vet, int value) {
         for (int x = 0; x < vet.length; x++) {
             if (vet[x] == value) {
@@ -8,6 +9,7 @@ public class Search {
         return -1;
     }
 
+    // BUSCA BINARIA
     public boolean bynariSearch(int[] vet, int value) {
         int start = 0;
         int middle = 0;
