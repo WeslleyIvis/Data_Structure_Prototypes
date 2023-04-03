@@ -10,18 +10,6 @@ public class mainClass {
             vet[i] = i;
             numeros.add(i);
         }
-
-        Shuffle sh = new Shuffle();
-        Sort sr = new Sort();
-
-        sh.shuffle(vet);
-
-        sh.write(vet);
-        System.out.println("-__----\n ----- \n ----_-");
-
-        sr.bubbleSort(vet);
-        sh.write(vet);
-
     }
 
 }
