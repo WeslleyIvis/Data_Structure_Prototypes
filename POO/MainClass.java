@@ -2,42 +2,40 @@ import java.util.*;
 
 public class MainClass {
     public static void main(String[] args) {
-        ArrayList<Carta> baralho = new ArrayList<Carta>();
-        baralho.add(new Carta());
-        for (int i = 0; i < 52; i++) {
-            Carta carta = new Carta();
-            boolean ok = true;
-            while (ok && baralho.size() < 52) {
-                ok = false;
-                for (int j = 0; j < baralho.size(); j++) {
-                    if (carta.getFace() == baralho.get(j).getFace() && carta.getNaipe() == baralho.get(j).getNaipe()) {
-                        carta = new Carta();
-                        ok = true;
-                    }
-                }
-            }
-            baralho.add(carta);
+        int[] vet = new int[100000];
+        int[] vet1 = new int[100000];
+        int[] vet2 = new int[100000];
+
+        ArrayList<Integer> numeros = new ArrayList<Integer>();
+
+        for (int i = 0; i < vet.length; i++) {
+            vet[i] = i;
+            vet1[i] = i;
+            vet2[i] = i;
+            numeros.add(i);
         }
-        sort(baralho);
+
+        Shuffle deck = new Shuffle();
+        deck.shuffle(vet);
+        deck.shuffle(vet1);
+        deck.shuffle(vet2);
+
+        Sort sort = new Sort();
+
+        long startSS = System.currentTimeMillis();
+        sort.selectionSort(vet);
+        long endSS = System.currentTimeMillis();
+        System.out.println("\nTIME: " + (endSS - startSS));
+
+        long startIS = System.currentTimeMillis();
+        sort.insertSort(vet1);
+        long endIS = System.currentTimeMillis();
+        System.out.println("TIME: " + (endIS - startIS));
+
+        long startBS = System.currentTimeMillis();
+        sort.bubbleSort(vet2);
+        long endBS = System.currentTimeMillis();
+        System.out.println("TIME: " + (endBS - startBS));
     }
 
-    static void sort(ArrayList<Carta> array) {
-        int face, naipe;
-        boolean ok = true;
-        while (ok) {
-            ok = false;
-            for (int i = 0; i + 1 < array.size(); i++) {
-                if (array.get(i).getFace() > array.get(i + 1).getFace()) {
-                    face = array.get(i).getFace();
-                    naipe = array.get(i).getNaipe();
-                    array.get(i).sh(array.get(i + 1).getFace(), array.get(i + 1).getNaipe());
-                    array.get(i + 1).sh(face, naipe);
-                    ok = true;
-                }
-            }
-        }
-        array.forEach((e) -> {
-            e.imprimir();
-        });
-    }
 }
