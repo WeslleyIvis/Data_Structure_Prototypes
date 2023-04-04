@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Carta {
     // atributos
     private int face;
@@ -70,4 +72,69 @@ public class Carta {
             System.out.println("##");
     }
 
+    public void creatDeckVet(Carta[] array) {
+        int aux = 0;
+        for (int i = 1; i <= 4; i++) {
+            for (int j = 1; j <= 13; j++) {
+                array[aux] = new Carta(j, i);
+                aux++;
+            }
+        }
+    }
+
+    public void shuffleDeckVet(Carta[] array) {
+        Carta aux;
+        for (int i = 0; i < array.length; i++) {
+            int random = (int) (Math.random() * array.length);
+            aux = array[i];
+            array[i] = array[random];
+            array[random] = aux;
+        }
+    }
+
+    public void write(Carta[] array) {
+        for (int i = 0; i < array.length; i++) {
+            System.out.println("Face: " + array[i].getFace() + " Naipe: " + array[i].getNaipe());
+        }
+    }
+
+    public ArrayList<Carta> creatRandomDeck() {
+        ArrayList<Carta> array = new ArrayList<Carta>();
+        for (int i = 0; i < 52; i++) {
+            Carta carta = new Carta();
+            boolean ok = true;
+            while (ok && array.size() < 52) {
+                ok = false;
+                for (int j = 0; j < array.size(); j++) {
+                    if (carta.face == array.get(j).getFace() && carta.naipe == array.get(j).getNaipe()) {
+                        carta = new Carta();
+                        ok = true;
+                    }
+                }
+            }
+            array.add(carta);
+        }
+        return array;
+    }
+
+    public void sort(ArrayList<Carta> array) {
+        int face, naipe;
+        boolean ok = true;
+        while (ok) {
+            ok = false;
+            for (int i = 0; i + 1 < array.size(); i++) {
+                if (array.get(i).getFace() > array.get(i + 1).getFace()) {
+                    face = array.get(i).getFace();
+                    naipe = array.get(i).getNaipe();
+                    array.get(i).sh(array.get(i + 1).getFace(), array.get(i + 1).getNaipe());
+                    array.get(i + 1).sh(face, naipe);
+                    ok = true;
+                }
+            }
+        }
+
+        array.forEach((e) -> {
+            e.imprimir();
+        });
+    }
 }
