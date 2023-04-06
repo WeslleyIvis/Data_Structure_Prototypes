@@ -72,6 +72,7 @@ public class Carta {
             System.out.println("##");
     }
 
+    // Cria todas as cartas do baralho em um vetor de 52 espaços
     public void creatDeckVet(Carta[] array) {
         int aux = 0;
         for (int i = 1; i <= 4; i++) {
@@ -82,6 +83,7 @@ public class Carta {
         }
     }
 
+    // Embaralha as posições do vetor
     public void shuffleDeckVet(Carta[] array) {
         Carta aux;
         for (int i = 0; i < array.length; i++) {
@@ -92,12 +94,14 @@ public class Carta {
         }
     }
 
+    // Imprime as cartas do deck
     public void write(Carta[] array) {
         for (int i = 0; i < array.length; i++) {
             System.out.println("Face: " + array[i].getFace() + " Naipe: " + array[i].getNaipe());
         }
     }
 
+    // Deck com ArrayList = Vetor dinamico
     public ArrayList<Carta> creatRandomDeck() {
         ArrayList<Carta> array = new ArrayList<Carta>();
         for (int i = 0; i < 52; i++) {
@@ -117,6 +121,7 @@ public class Carta {
         return array;
     }
 
+    // Organiza as cartas de forma li
     public void sort(ArrayList<Carta> array) {
         int face, naipe;
         boolean ok = true;
