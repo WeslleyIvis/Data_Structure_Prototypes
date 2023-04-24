@@ -1,19 +1,16 @@
-public class Fila {
-    // atributos
+public class Queue {
     private int comeco;
     private int fim;
     private int[] dados;
     private int total;
 
-    // construtor
-    public Fila(int tamanho) {
+    public Queue(int tamanho) {
         dados = new int[tamanho];
         total = 0;
         comeco = 0;
         fim = 0;
     }
 
-    // mÃ©todos auxiliares
     public boolean isEmpty() {
         return total == 0;
     }
@@ -22,22 +19,36 @@ public class Fila {
         return total == dados.length;
     }
 
-    // mÃ©todo para inserir
     public void enqueue(int dado) {
         if (!isFull()) {
-            // insere o dado
             dados[fim] = dado;
-            // incrementa contador
             total++;
-            // move o indice
             fim++;
-            // circularidade
             fim %= dados.length;
         } else
             System.out.println("fila cheia");
     }
 
-    // implementar dequeue()
-    // implementar o imprime()
-    // F:[1, 2, 3, 5]
+    public int dequeue() {
+        if (!isEmpty()) {
+            int value = dados[comeco];
+            dados[comeco] = 0;
+            comeco++;
+            return value;
+        }
+        return -1;
+    }
+
+    public void write() {
+        String data = "F: [";
+        for (int i = 0; i < dados.length; i++) {
+            if (!(dados[i] == 0)) {
+                data += dados[i] + ", ";
+            }
+        }
+
+        data += "]";
+
+        System.out.println(data);
+    }
 }
