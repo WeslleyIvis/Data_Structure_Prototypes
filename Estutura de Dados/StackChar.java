@@ -1,15 +1,12 @@
 public class StackChar {
-    // atributos
     private char[] dados;
     private int topo;
 
-    // construtor
     public StackChar(int tamanho) {
         dados = new char[tamanho];
         topo = -1;
     }
 
-    // mÃ©todos auxiliares
     boolean isEmpty() {
         return topo <= -1;
     }
@@ -18,19 +15,15 @@ public class StackChar {
         return topo == dados.length - 1;
     }
 
-    // mÃ©todo que retorna o valor do topo
     char top() {
         if (!isEmpty())
             return dados[topo];
         else
-            return ' '; // pilha vazia
+            return ' ';
     }
 
-    // mÃ©todo que insere no topo
     void push(char dado) {
         if (!isFull()) {
-            // sobe o topo
-            // insere o dado
             dados[++topo] = dado;
         } else
             System.out.println("pilha cheia");
@@ -52,7 +45,4 @@ public class StackChar {
         pilha += "]";
         System.out.println(pilha);
     }
-    // implementar um cÃ³digo no main que usa pilha para converter um numero de
-    // decimal
-    // para binario
 }
