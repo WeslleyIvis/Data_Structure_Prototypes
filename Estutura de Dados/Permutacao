@@ -1,3 +1,6 @@
+Refatorar para java pois esta em JS
+
+
 function contar(min, max, v1, v2) {
     let c1 = 0, c2 = 0;
     let vet1 = [], vet2 = [];
