@@ -32,9 +32,7 @@ public class QueueCircular {
 
     public Integer dequeue() {
         if (!isEmpty()) {
-            Integer value = this.data[this.end];
-            System.out.println(this.data[this.start]);
-            this.data[this.start] = null;
+            Integer value = this.data[this.end];         
             this.total--;
             this.start++;
             this.start %= this.data.length;
@@ -46,10 +44,11 @@ public class QueueCircular {
 
     public void write() {
         String value = "F: [";
-        for (int i = 0; i < this.data.length; i++) {
-            if (!(this.data[i] == null)) {
-                value += this.data[i] + ", ";
-            }
+        int temp = start;
+
+        for (int i = 0; i < this.total; i++) {           
+            value += data[temp++] + ", ";
+            temp %= this.data.length;
         }
 
         value += "]";
