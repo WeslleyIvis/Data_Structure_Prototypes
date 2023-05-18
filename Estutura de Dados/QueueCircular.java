@@ -21,9 +21,8 @@ public class QueueCircular {
 
     public void enqueue(int value) {
         if (!isFull()) {
-            this.data[end] = value;
+            this.data[end++] = value;
             this.total++;
-            this.end++;
             this.end %= data.length;
         } else
             System.out.println("fila cheia");
@@ -32,7 +31,7 @@ public class QueueCircular {
 
     public Integer dequeue() {
         if (!isEmpty()) {
-            Integer value = this.data[this.end];         
+            Integer value = this.data[this.end];
             this.total--;
             this.start++;
             this.start %= this.data.length;
@@ -46,7 +45,7 @@ public class QueueCircular {
         String value = "F: [";
         int temp = start;
 
-        for (int i = 0; i < this.total; i++) {           
+        for (int i = 0; i < this.total; i++) {
             value += data[temp++] + ", ";
             temp %= this.data.length;
         }
