@@ -11,7 +11,7 @@ class Node {
         this.data = data;
     }
 
-    public Object getDado() {
+    public Object getData() {
         return this.data;
     }
 
