@@ -2,9 +2,16 @@ import java.util.*;
 
 public class MainClass {
     public static void main(String[] args) {
-        // ArrayList<Carta> baralho = new ArrayList<Carta>();
+        StackDin p1 = new StackDin();
 
+        p1.push(7);
+        p1.push(9);
+        p1.push(4);
+        p1.push(1);
 
+        System.out.println(p1.toString());
+        System.out.println(p1.pop());
+        System.out.println(p1.toString());
     }
 
     public static void decimalToBinary(int value) {
