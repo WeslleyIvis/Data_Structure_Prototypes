@@ -7,6 +7,11 @@ class Node {
         this.prox = prox;
     }
 
+    public Node() {
+        this.data = null;
+        this.prox = null;
+    }
+
     public void setData(Object data) {
         this.data = data;
     }
