@@ -1,4 +1,4 @@
-//Refatorar para java pois esta em JS
+//KAHN CADEMY
 
 function contar(min, max, v1, v2) {
   let c1 = 0,
