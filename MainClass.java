@@ -3,15 +3,13 @@ import java.util.*;
 public class MainClass {
     public static void main(String[] args) {
         StackDin p1 = new StackDin();
+        FilaDin fila = new FilaDin();
 
-        p1.push(7);
-        p1.push(9);
-        p1.push(4);
-        p1.push(1);
+        fila.enqueue(10);
+        fila.enqueue(10);
+        fila.enqueue("Carro");
 
-        System.out.println(p1.toString());
-        System.out.println(p1.pop());
-        System.out.println(p1.toString());
+        System.out.println(fila.toString());
     }
 
     public static void decimalToBinary(int value) {
