@@ -1,42 +1,23 @@
-import javax.swing.*;
-import java.awt.FlowLayout;
-import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.util.Scanner;
 
 public class MainClass {
     public static void main(String[] args) {
-        Deck deck = new Deck();
-        Jogador mao = new Jogador();
+        Carroex carro = new Carroex(50, 50);
+        Scanner scanner = new Scanner(System.in);
 
-        deck.gerarBaralho(2);
-        deck.embaralhar();
+        int aux = 1;
 
-        JFrame frame = new JFrame("Jogo do Bixo");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLayout(new FlowLayout());
+        while (aux > 0) {
+            System.out.println("Valor");
+            aux = scanner.nextInt();
 
-        JLabel cartaAtual = new JLabel("Comprou: --");
-        JLabel label = new JLabel("Valor: 0");
-        label.setPreferredSize(new Dimension(300, 300));
-
-        JButton button = new JButton("Comprar Carta");
-
-        button.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                Carta cartaComprada = deck.darCarta();
-                mao.comprarCarta(cartaComprada);
-                cartaAtual.setText("" + deck.imprimirCarta(cartaComprada));
-                label.setText("Valor: " + mao.valorDaMao());
-            }
-        });
-
-        frame.getContentPane().add(cartaAtual);
-        frame.getContentPane().add(label);
-        frame.getContentPane().add(button);
-        frame.pack();
-        frame.setVisible(true);
-
+            if (aux == 1)
+                carro.motor.Ligar();
+            else if (aux == 2)
+                carro.motor.Desligar();
+            else
+                aux = 0;
+        }
     }
 
     public static void decimalToBinary(int value) {
