@@ -1,6 +1,4 @@
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
+import javax.swing.*;
 import java.awt.FlowLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -9,25 +7,32 @@ import java.awt.event.ActionListener;
 public class InterfaceJogo {
 
     public void initInterface() {
+        Deck deck = new Deck();
+        Jogador mao = new Jogador();
+
+        deck.gerarBaralho(2);
+        deck.embaralhar();
+
         JFrame frame = new JFrame("Jogo do Bixo");
-        frame.setSize(500, 300);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new FlowLayout());
 
+        JLabel cartaAtual = new JLabel("Comprou: --");
         JLabel label = new JLabel("Valor: 0");
-        JButton button = new JButton("Clique Aqui");
-        label.setPreferredSize(new Dimension(500, 300));
-        button.setSize(300, 400);
+        label.setPreferredSize(new Dimension(300, 300));
 
-        int[] valor = { 0 }; // Valor a ser modificado
+        JButton button = new JButton("Comprar Carta");
 
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                valor[0]++; // Incrementa o valor
-                label.setText("Valor: " + valor[0]); // Atualiza o texto do label
+                Carta cartaComprada = deck.darCarta();
+                mao.comprarCarta(cartaComprada);
+                cartaAtual.setText("" + deck.imprimirCarta(cartaComprada));
+                label.setText("Valor: " + mao.valorDaMao());
             }
         });
 
+        frame.getContentPane().add(cartaAtual);
         frame.getContentPane().add(label);
         frame.getContentPane().add(button);
         frame.pack();
