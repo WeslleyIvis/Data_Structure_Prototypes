@@ -1,23 +1,10 @@
-import java.util.Scanner;
+import Voice.MainInterface;
 
 public class MainClass {
     public static void main(String[] args) {
-        Carroex carro = new Carroex(50, 50);
-        Scanner scanner = new Scanner(System.in);
+        MainInterface saveFile = new MainInterface();
+        saveFile.setVisible(true);
 
-        int aux = 1;
-
-        while (aux > 0) {
-            System.out.println("Valor");
-            aux = scanner.nextInt();
-
-            if (aux == 1)
-                carro.motor.Ligar();
-            else if (aux == 2)
-                carro.motor.Desligar();
-            else
-                aux = 0;
-        }
     }
 
     public static void decimalToBinary(int value) {
