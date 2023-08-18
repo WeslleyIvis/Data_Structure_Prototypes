@@ -4,6 +4,14 @@ public class Queue {
     private int[] dados;
     private int total;
 
+    public int getFim() {
+        return fim;
+    }
+
+    public int getTotal() {
+        return total;
+    }
+
     public Queue(int tamanho) {
         dados = new int[tamanho];
         total = 0;
@@ -32,7 +40,7 @@ public class Queue {
     public int dequeue() {
         if (!isEmpty()) {
             int value = dados[comeco];
-            dados[comeco] = 0;
+            dados[comeco] = comeco;
             comeco++;
             return value;
         }

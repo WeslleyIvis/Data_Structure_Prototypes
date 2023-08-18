@@ -1,26 +1,27 @@
-import Voice.MainInterface;
+import java.util.ArrayList;
 
 public class MainClass {
     public static void main(String[] args) {
-        MainInterface saveFile = new MainInterface();
-        saveFile.setVisible(true);
+        ArrayList<Object> list = new ArrayList<>();
 
+        StackDin pilha = new StackDin();
+        Queue fila = new Queue(10);
+
+        fila.enqueue(3);
+        fila.enqueue(7);
+        fila.enqueue(5);
+        fila.enqueue(5);
+        fila.dequeue();
+
+        pilha.push(2);
+        pilha.pop();
+        pilha.pop();
+        pilha.push(1);
+
+        list.add(fila);
+        list.add(pilha);
+
+        System.out.println(fila.getFim());
+        System.out.println(fila.getTotal());
     }
-
-    public static void decimalToBinary(int value) {
-        Stack stack = new Stack(value / 2);
-        String output = "";
-
-        do {
-            stack.push(value % 2);
-            value = value / 2;
-        } while (value > 0);
-
-        while (!stack.isEmpty()) {
-            output += stack.pop();
-        }
-
-        System.out.println(output);
-    }
-
 }
